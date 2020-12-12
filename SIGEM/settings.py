@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
+    #URLS APPS
+    'applications.nave',
+    #'applications.aeronave',
+    #'applications.gestor_pasajeros',
 ]
 
 MIDDLEWARE = [

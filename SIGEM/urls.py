@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, re_path, include
+import applications.nave
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #SE AGREGAN LAS URLS DE LA APPS
+    #path(r'^nave/', include('applications.nave')),
+    #re_path('', include('applications.aeronave')),
 ]
