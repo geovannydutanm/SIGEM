@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     #URLS APPS
-    'applications.nave',
-    #'applications.aeronave',
+    #'applications.nave',
+    'applications.aeronave',
     #'applications.gestor_pasajeros',
 ]
 
@@ -82,7 +82,8 @@ WSGI_APPLICATION = 'SIGEM.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+        #'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
