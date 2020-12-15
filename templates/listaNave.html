@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista naves</title>
+</head>
+<body>
+
+    <h1>Listado de Naves</h1>
+    <div class="container">
+    <ul>
+        {% for aeronave in aeronaveList %} {{ aeronave }}{% endfor %}
+    </ul>
+    <a href="{% url "aeronave_nueva" %}">Nueva nave</a>
+    </div>
+</body>
+</html

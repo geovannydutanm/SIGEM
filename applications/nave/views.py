@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import  HttpResponse
+#from django.http import  HttpResponse
+from .models import Naves
 
 # Create your views here.
-def nave(request):
-    return  HttpResponse("sss")
+def NaveView(request):
+    nave = Naves.objects.all()
+    return  render(request,'listaNave.html')

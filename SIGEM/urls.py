@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from applications.aeronave.urls import path
 from applications.nave.urls import path
+from applications.nave.views import NaveView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #SE AGREGAN LAS URLS DE LA APPS
     path('', include('applications.aeronave.urls')),
+    path('nave/', NaveView,name = 'nave'),
     #re_path('', include('applications.aeronave')),
 ]
 
