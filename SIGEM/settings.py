@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     #URLS APPS
-    #'applications.nave',
+    'applications.nave',
     'applications.aeronave',
     #'applications.gestor_pasajeros',
 ]
