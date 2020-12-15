@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #SE AGREGAN LAS URLS DE LA APPS
     path('', include('applications.aeronave.urls')),
-    path('nave/', NaveView,name = 'nave'),
+    path('', include('applications.nave.urls')),
+    #path('naves/', NaveView,name = 'lista_nave'),
     #re_path('', include('applications.aeronave')),
 ]
 

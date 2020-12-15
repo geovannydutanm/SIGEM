@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista naves</title>
+    <title>Lista_Nave</title>
 </head>
 <body>
 
     <h1>Listado de Naves</h1>
     <div class="container">
     <ul>
-        {% for aeronave in aeronaveList %} {{ aeronave }}{% endfor %}
+        {% for Naves in naveList %} {{ Naves }}{% endfor %}
     </ul>
-    <a href="{% url "aeronave_nueva" %}">Nueva nave</a>
+    <a href="{% url "nave_nueva" %}">Nueva nave</a>
     </div>
 </body>
 </html
