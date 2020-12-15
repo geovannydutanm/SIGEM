@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-import applications.nave
+from applications.aeronave.urls import path
+from applications.nave.urls import path
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #SE AGREGAN LAS URLS DE LA APPS
-    #path(r'^nave/', include('applications.nave')),
+    path('', include('applications.aeronave.urls')),
     #re_path('', include('applications.aeronave')),
 ]
+
+#for url in include('applications.aeronave.urls').urlpatterns:
+    #urlpatterns.append(url)
+#urlpatterns.append(url)

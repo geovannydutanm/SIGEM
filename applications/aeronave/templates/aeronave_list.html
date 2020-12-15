@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aeronaves App</title>
+</head>
+<body>
+
+    <h1>Aeronaves Disponibles</h1>
+    <div class="container">
+    <ul>
+        {% for aeronave in aeronaveList %} {{ aeronave }}{% endfor %}
+    </ul>
+    <a href="{% url "aeronave_nueva" %}">Nueva aeronave</a>
+    </div>
+</body>
+</html>
