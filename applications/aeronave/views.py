@@ -19,9 +19,8 @@ class aeronaveForm(ModelForm):
 
 def aeronaveList(request, template_name = 'aeronave_list.html'):
     aeronaves = aeronave.objects.all()
-    data = { }
-    data['object_list'] = aeronaves
-    return render(request, template_name, data)
+    context = {'aeronaves':aeronaves}
+    return render(request, template_name, context)
 
 def aeronave_create(request, template_name = 'Crear_Aeronave.html'):
     form = aeronaveForm(request.POST or None)

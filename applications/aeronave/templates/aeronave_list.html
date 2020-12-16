@@ -6,6 +6,16 @@
 </head>
 <body>
 
+
+
+
+    {% for aeronave in aeronaves %}
+    <tr>
+        <td>{{ aeronave.name }}</td>
+    </tr>
+    {% endfor %}
+
+
     <h1>Aeronaves Disponibles</h1>
     <div class="container">
     <ul>
