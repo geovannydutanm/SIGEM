@@ -12,7 +12,7 @@ urlpatterns = [
     #path('updat_nave/', views.list_nave, name='list_nave'),
 
     #AERONAVE
-    path('aeronave/list_aeronave', views.list_aeronave, name='list_aeronave'),
+    path('aeronave/list_aeronave/', views.list_aeronave, name='list_aeronave'),
     path('aeronave/create_aeronave', views.create_aeronave, name='create_aeronave'),
 
     #PASAJERO
