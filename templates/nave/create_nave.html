@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block main %}
+    <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <h1>CREAR NAVE</h1>
+        <div class="container">
+            <form method="post">{%  csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+    </section>
+{% endblock %}
