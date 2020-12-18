@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "index.html" %}
+{% block main %}
+{#    <section class="page-section portfolio" id="portfolio">#}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <td>FECHA</td>
+                    <td>AERONAVE</td>
+                    <td>PASAJERO</td>
+                </tr>
+                {% for item in aeronave_pasajero %}
+                     {% if item.ingresa_eronave %}
+                         <tr class="table-info">
+                        <th scope="row">INGRESA</th>
+                        <td>{{ item.fecha_registra }}</td>
+                        <td>{{ item.aeronave.name }}</td>
+                        <td>{{ item.pasajero.name }}</td>
+                        </tr>
+                     {% else %}
+                         <tr class="table-warning">
+                        <th scope="row">SALE</th>
+                        <td>{{ item.fecha_registra }}</td>
+                        <td>{{ item.aeronave.name }}</td>
+                        <td>{{ item.pasajero.name }}</td>
+                        </tr>
+                     {% endif %}
 
-</body>
-</html>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

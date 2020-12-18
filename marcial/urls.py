@@ -21,7 +21,8 @@ urlpatterns = [
 
     #AEROPASAJERO
     path('aeronavepasajero/list_aeronave_pasajero/', views.list_aeronave_pasajero, name='list_aeronave_pasajero'),
-    path('aeronavepasajero/create_aeronave_pasajero', views.create_aeronave_pasajero, name='create_aeronave_pasajero'),
+    path('aeronavepasajero/create_aeronave_pasajeroin', views.create_aeronave_pasajeroIn, name='create_aeronave_pasajero'),
+    path('aeronavepasajero/create_aeronave_pasajeroout', views.create_aeronave_pasajeroout, name='create_aeronave_pasajero'),
 
     #REVISION
     path('revision/list_revision', views.list_revision, name='list_revision'),

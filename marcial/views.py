@@ -119,12 +119,24 @@ class aeronave_pasajeroForm(ModelForm):
             'pasajero',
         ]
 
-def create_aeronave_pasajero(request, template_name = 'aeronavepasajero/create_aeronave_pasajero.html'):
+def create_aeronave_pasajeroIn(request, template_name = 'aeronavepasajero/create_aeronave_pasajero.html'):
     form = aeronave_pasajeroForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        post = form.save(commit=False)
+        post.ingresa_aeronave=True
+        post.save()
         return redirect('list_aeronave_pasajero')
     return render(request, template_name, {'form': form})
+
+def create_aeronave_pasajeroout(request, template_name = 'aeronavepasajero/create_aeronave_pasajero.html'):
+    form = aeronave_pasajeroForm(request.POST or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+        #post.ingresa_aeronave=False
+        post.save()
+        return redirect('list_aeronave_pasajero')
+    return render(request, template_name, {'form': form})
+
 
 def update_aeronave_pasajero(request, pk, template_name='aeronavepasajero/create_aeronave_pasajero.html'):
     aeronave_pasajero_update = get_object_or_404(Nave, pk=pk)

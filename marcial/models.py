@@ -22,11 +22,10 @@ class Pasajero(models.Model):
 
 #MODELO AERONAVE PASAJERO
 class Aeronave_Pasajero(models.Model):
-    name = models.CharField(max_length = 100)
     fecha_registra = models.DateTimeField(auto_now=True)
-    ingresa_eronave = models.BooleanField()
-    aeronave = models.ForeignKey(Pasajero, related_name='aeronaves_aeropasajero', on_delete=models.CASCADE, null=True, default=None)
-    pasajero = models.ForeignKey(Aeronave, related_name='pasajeros_aeropasajero', on_delete=models.CASCADE, null=True, default=None)
+    ingresa_eronave = models.BooleanField(default=False)
+    aeronave = models.ForeignKey(Aeronave, related_name='aeronaves_aeropasajero', on_delete=models.CASCADE, null=True, default=None)
+    pasajero = models.ForeignKey(Pasajero, related_name='pasajeros_aeropasajero', on_delete=models.CASCADE, null=True, default=None)
 
 #REVISION
 class Revision(models.Model):
