@@ -1,8 +1,10 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# CodeStream ignored files
+/../../proyectomarcial\.idea/codestream.xml
 # Datasource local storage ignored files
-/../../../../../:\ProyectoISI\Django\SIGEM\.idea/dataSources/
+/../../../../../:\ProyectoISI\Django\proyectomarcial\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

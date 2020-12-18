@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block main %}
+{#    <section class="page-section portfolio" id="portfolio">#}
+
+    <div class="container">
+        <a href="{% url "create_nave" %}">Nueva Nave</a>
+    </div>
+    <div class="container">
+         <div class="table-responsive">
+             <table class="table">
+                {% for nav in nave %}
+                    <tr>
+                        <td>NOMBRE NAVE</td>
+                    </tr>
+                    <tr>
+                        <td>{{ nav.name }}</td>
+                    </tr>
+                {% endfor %}
+             </table>
+         </div>
+    </div>
+{% endblock %}
