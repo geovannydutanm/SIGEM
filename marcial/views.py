@@ -82,7 +82,7 @@ def delete_aeronave(request, pk, template_name = 'aeronave/delete_aeronave.html'
 #PASAJERO
 def list_pasajero(request):
     pasajero = Pasajero.objects.all()
-    return render(request, template_name='pasajero/list_pasajero.html', context= {'pasajero':pasajero})
+    return render(request, template_name='pasajero/list_pasajero.html', context={'pasajero':pasajero})
 
 class pasajeroForm(ModelForm):
     class Meta:

@@ -20,17 +20,19 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.contrib.staticfiles import views
 from django.urls import re_path
-from marcial.views import index
+from marcial.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    #path('', index),
     #re_path('', include('marcial.urls')),
-    re_path(r'^aeronave/', include('marcial.urls')),
-    re_path(r'^nave/', include('marcial.urls')),
-    re_path(r'^pasajero/', include('marcial.urls')),
-    re_path(r'^aeronavepasajero/', include('marcial.urls')),
-    re_path(r'^revision/', include('marcial.urls')),
+    path('', include('marcial.urls')),
+
+    #e_path(r'^nave/', include('marcial.urls')),
+    #re_path(r'^pasajero/', include('marcial.urls')),
+    #re_path(r'^aeronavepasajero/', include('marcial.urls')),
+    #re_path(r'^revision/', include('marcial.urls')),
+
 ]
 
 if settings.DEBUG:
