@@ -46,6 +46,9 @@ def list_aeronave(request):
     return render(request, template_name='aeronave/list_aeronave.html', context= {'aeronave':aeronave})
 
 class aeronaveForm(ModelForm):
+
+    #def __init__(self, +args, ++kwargs):
+     #   super(aeronaveForm, self).__init__(*args, **kwargs)
     class Meta:
         model = Aeronave
         fields = [
@@ -111,29 +114,60 @@ def list_aeronave_pasajero(request):
     aeronave_pasajero = Aeronave_Pasajero.objects.all()
     return render(request, template_name='aeronavepasajero/list_aeronave_pasajero.html', context= {'aeronave_pasajero':aeronave_pasajero})
 
+class aeronave_pasajeroFormIn(ModelForm):
+    class Meta:
+        model = Aeronave_Pasajero
+        fields = [
+            'aeronave',
+            'pasajero',
+            #'ingresa_aeronave',
+
+        ]
+    def save(self):
+        user = super(aeronave_pasajeroFormIn, self).save(commit=False)
+        user.ingresa_aeronave = True
+        user.save()
+
+
+
+class aeronave_pasajeroFormOut(ModelForm):
+        class Meta:
+            model = Aeronave_Pasajero
+            fields = [
+                'aeronave',
+                'pasajero',
+                # 'ingresa_aeronave',
+
+            ]
+        def save(self):
+            user = super(aeronave_pasajeroFormOut, self).save(commit=False)
+            user.ingresa_aeronave = False
+            user.save()
+
 class aeronave_pasajeroForm(ModelForm):
     class Meta:
         model = Aeronave_Pasajero
         fields = [
             'aeronave',
             'pasajero',
+            #'ingresa_aeronave',
+
         ]
 
+
 def create_aeronave_pasajeroIn(request, template_name = 'aeronavepasajero/create_aeronave_pasajero.html'):
-    form = aeronave_pasajeroForm(request.POST or None)
+    form = aeronave_pasajeroFormIn(request.POST or None)
     if form.is_valid():
-        post = form.save(commit=False)
-        post.ingresa_aeronave=True
-        post.save()
+        form.save()
         return redirect('list_aeronave_pasajero')
     return render(request, template_name, {'form': form})
 
-def create_aeronave_pasajeroout(request, template_name = 'aeronavepasajero/create_aeronave_pasajero.html'):
-    form = aeronave_pasajeroForm(request.POST or None)
+
+
+def create_aeronave_pasajeroout(request, template_name = 'aeronavepasajero/create_aeronave_pasajero_OUT.html'):
+    form = aeronave_pasajeroFormOut(request.POST or None)
     if form.is_valid():
-        post = form.save(commit=False)
-        #post.ingresa_aeronave=False
-        post.save()
+        form.save()
         return redirect('list_aeronave_pasajero')
     return render(request, template_name, {'form': form})
 
@@ -145,6 +179,7 @@ def update_aeronave_pasajero(request, pk, template_name='aeronavepasajero/create
         form.save()
         return redirect('list_aeronave_pasajero')
     return render(request, template_name, {'form': form})
+
 
 #BACKEND REVISION
 def list_revision(request):

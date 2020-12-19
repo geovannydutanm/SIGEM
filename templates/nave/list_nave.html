@@ -3,15 +3,15 @@
 {#    <section class="page-section portfolio" id="portfolio">#}
 
     <div class="container">
-        <a href="{% url "create_nave" %}">Nueva Nave</a>
+        <a href="{% url "create_nave" %}">Nueva nave</a>
     </div>
     <div class="container">
          <div class="table-responsive">
              <table class="table">
+                 <tr>
+                    <td>NOMBRE NAVE</td>
+                </tr>
                 {% for nav in nave %}
-                    <tr>
-                        <td>NOMBRE NAVE</td>
-                    </tr>
                     <tr>
                         <td>{{ nav.name }}</td>
                     </tr>

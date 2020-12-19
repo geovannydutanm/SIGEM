@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "index.html" %}
+{% block main %}
+    <section class="page-section pasajero" id="pasajero">
+    <div class="container">
+        <h1>CREAR PASAJERO</h1>
+        <div class="container">
+            <form method="post">{%  csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+    </section>
+{% endblock %}
