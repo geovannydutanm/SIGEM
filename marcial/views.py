@@ -5,7 +5,7 @@
 
 #  BACKEND AERONAVE
 from django.shortcuts import render, redirect, get_object_or_404
-from django.forms import ModelForm
+from django.forms import ModelForm, DateInput
 
 from marcial.models import Nave, Aeronave, Pasajero, Aeronave_Pasajero, Revision
 
@@ -193,8 +193,13 @@ class revisionForm(ModelForm):
             'name',
             'fecha_registra',
             'aeronave',
-            #'pasajeros',
+            'pasajeros',
         ]
+        widgets = {'fecha_registra': DateInput}
+
+
+
+
 
 def create_revision(request, template_name = 'revision/create_revision.html'):
     form = revisionForm(request.POST or None)

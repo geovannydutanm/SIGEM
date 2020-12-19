@@ -25,7 +25,7 @@ urlpatterns = [
     path('aeronavepasajero/create_aeronave_pasajeroout', views.create_aeronave_pasajeroout, name='create_aeronave_pasajero_OUT'),
 
     #REVISION
-    path('revision/list_revision', views.list_revision, name='list_revision'),
+    path('revision/list_revision/', views.list_revision, name='list_revision'),
     path('revision/create_revision', views.create_revision, name='create_revision'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
