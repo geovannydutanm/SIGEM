@@ -85,7 +85,8 @@ WSGI_APPLICATION = 'proyectomarcial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlitebd_marcial',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlitemarciano1")),
+        #'NAME': BASE_DIR / 'db.sqlitebd_marcial',
     }
 }
 

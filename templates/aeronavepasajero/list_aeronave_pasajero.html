@@ -5,12 +5,13 @@
         <div class="table-responsive">
             <table class="table table-hover">
                 <tr>
+                    <td></td>
                     <td>FECHA</td>
                     <td>AERONAVE</td>
                     <td>PASAJERO</td>
                 </tr>
                 {% for item in aeronave_pasajero %}
-                     {% if item.ingresa_eronave %}
+                     {% if item.ingresa_aeronave %}
                          <tr class="table-info">
                         <th scope="row">INGRESA</th>
                         <td>{{ item.fecha_registra }}</td>

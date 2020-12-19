@@ -8,10 +8,12 @@
                 {% for aero in aeronave %}
                 <tr>
                     <td>NOMBRE</td>
+                    <td>ORIGEN</td>
                     <td>DESTINO</td>
                 </tr>
                 <tr>
                     <td>{{ aero.name }}</td>
+                    <td>{{ aero.nave_origen.name }}</td>
                     <td>{{ aero.nave_destino.name }}</td>
                 </tr>
                 {% endfor %}
