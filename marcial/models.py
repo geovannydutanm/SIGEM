@@ -35,12 +35,13 @@ class Aeronave_Pasajero(models.Model):
 #REVISION
 class Revision(models.Model):
     name = models.CharField(max_length = 100)
-    fecha_registra = models.DateTimeField("Fecha Registra")
+    fecha_registra = models.DateField("Fecha Registra")
     aeronave = models.ForeignKey(Aeronave, related_name='aeronaves_revision', on_delete=models.CASCADE)
-    pasajeros = models.ManyToManyField(Pasajero, related_name='revisiones')
+    pasajeros = models.ManyToManyField(Pasajero, related_name='revisiones', null=True, default=None)
 
     class Meta:
         ordering = ("fecha_registra",)
+
 
 '''
 class DetalleRevision(models.Model):

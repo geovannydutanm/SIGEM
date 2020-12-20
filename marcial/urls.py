@@ -27,5 +27,6 @@ urlpatterns = [
     #REVISION
     path('revision/list_revision/', views.list_revision, name='list_revision'),
     path('revision/create_revision', views.create_revision, name='create_revision'),
+    path('revision/modificar/<id>/', views.modificar_revision, name='modificar_revision'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

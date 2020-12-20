@@ -45,6 +45,10 @@ def list_aeronave(request):
     aeronave = Aeronave.objects.all()
     return render(request, template_name='aeronave/list_aeronave.html', context= {'aeronave':aeronave})
 
+def list_pasajeros_aeronave_id(request, int:id):
+    aeronave = Aeronave.lista_pasajeros.get(id=id)
+    return render(request, template_name='aeronave/list_aeronave.html', context= {'aeronave':aeronave})
+
 class aeronaveForm(ModelForm):
 
     #def __init__(self, +args, ++kwargs):
@@ -86,6 +90,8 @@ def delete_aeronave(request, pk, template_name = 'aeronave/delete_aeronave.html'
 def list_pasajero(request):
     pasajero = Pasajero.objects.all()
     return render(request, template_name='pasajero/list_pasajero.html', context={'pasajero':pasajero})
+
+
 
 class pasajeroForm(ModelForm):
     class Meta:
@@ -193,9 +199,33 @@ class revisionForm(ModelForm):
             'name',
             'fecha_registra',
             'aeronave',
-            'pasajeros',
+            #'pasajeros',
         ]
         widgets = {'fecha_registra': DateInput}
+
+
+def modificar_revision(request, id) :
+    revision = Revision.objects.get( id = id )
+    data = {
+        'form': revisionForm(instance = revision)
+    }
+    if request.method == 'POST' :
+        formulario = revisionForm(data = request.POST, instance = revision,files=request.FILES)
+        if formulario.is_valid():
+            aeronave = formulario.fields['aeronave']
+            date = formulario.fields['date']
+            review = Revision()
+            review.fecha_registra = date
+            review.save()
+            pasajeros = Aeronave.objects.filter(id=aeronave)
+            for p in pasajeros:
+                review.pasajeros.add(p)
+            review.save()
+
+            formulario.save()
+            data['mensaje'] = "Modificación Exitosa !!"
+            data['form'] = formulario
+    return redirect('list_aeronave_pasajero')
 
 
 
@@ -204,6 +234,12 @@ class revisionForm(ModelForm):
 def create_revision(request, template_name = 'revision/create_revision.html'):
     form = revisionForm(request.POST or None)
     if form.is_valid():
+        #aeronave = form.aeronave
+        idaero = form.data['aeronave']
+        revision = Revision()
+        #ids=form.save()
+        user = Aeronave.objects.filter(id=idaero)
+        form.revisiones.add(form.aeronave.lista_pasajeros)
         form.save()
         return redirect('list_revision')
     return render(request, template_name, {'form': form})
