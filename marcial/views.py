@@ -202,7 +202,16 @@ class revisionForm(ModelForm):
             #'pasajeros',
         ]
         widgets = {'fecha_registra': DateInput}
+    def save(self):
+        rev= super(revisionForm, self).save(commit=False)
+        rev.revisiones.add(rev.aeronave.lista_pasajeros)
+        #if rev:
+            #review.fecha_registra = date
+            #review.save()
+            #user = Aeronave.objects.filter(id=idaero)
 
+            #pasajeros = Aeronave.objects.filter(id=aeronave)
+            #rev = super(revisionForm, self).save(commit=False)
 
 def modificar_revision(request, id) :
     revision = Revision.objects.get( id = id )
@@ -212,20 +221,11 @@ def modificar_revision(request, id) :
     if request.method == 'POST' :
         formulario = revisionForm(data = request.POST, instance = revision,files=request.FILES)
         if formulario.is_valid():
-            aeronave = formulario.fields['aeronave']
-            date = formulario.fields['date']
-            review = Revision()
-            review.fecha_registra = date
-            review.save()
-            pasajeros = Aeronave.objects.filter(id=aeronave)
-            for p in pasajeros:
-                review.pasajeros.add(p)
-            review.save()
 
             formulario.save()
             data['mensaje'] = "Modificación Exitosa !!"
             data['form'] = formulario
-    return redirect('list_aeronave_pasajero')
+    return redirect('list_revision')
 
 
 
@@ -239,7 +239,7 @@ def create_revision(request, template_name = 'revision/create_revision.html'):
         revision = Revision()
         #ids=form.save()
         user = Aeronave.objects.filter(id=idaero)
-        form.revisiones.add(form.aeronave.lista_pasajeros)
+        #form.revisiones.add(form.aeronave.lista_pasajeros)
         form.save()
         return redirect('list_revision')
     return render(request, template_name, {'form': form})
