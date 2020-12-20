@@ -46,9 +46,13 @@ def list_aeronave(request):
     return render(request, template_name='aeronave/list_aeronave.html', context= {'aeronave':aeronave})
 
 class aeronaveForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(aeronaveForm, self).__init__(*args, **kwargs)
+        self.fields['nave_origen'].queryset = Nave.objects.all()
+        self.fields['nave_origen'].label_from_instance = lambda obj: "%s" % (obj.name)
+        self.fields['nave_destino'].queryset = Nave.objects.all()
+        self.fields['nave_destino'].label_from_instance = lambda obj: "%s" % (obj.name)
 
-    #def __init__(self, +args, ++kwargs):
-     #   super(aeronaveForm, self).__init__(*args, **kwargs)
     class Meta:
         model = Aeronave
         fields = [
@@ -115,6 +119,12 @@ def list_aeronave_pasajero(request):
     return render(request, template_name='aeronavepasajero/list_aeronave_pasajero.html', context= {'aeronave_pasajero':aeronave_pasajero})
 
 class aeronave_pasajeroFormIn(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(aeronave_pasajeroFormIn, self).__init__(*args, **kwargs)
+        self.fields['aeronave'].queryset = Nave.objects.all()
+        self.fields['aeronave'].label_from_instance = lambda obj: "%s" % (obj.name)
+        self.fields['pasajero'].queryset = Nave.objects.all()
+        self.fields['pasajero'].label_from_instance = lambda obj: "%s" % (obj.name)
     class Meta:
         model = Aeronave_Pasajero
         fields = [
@@ -126,11 +136,19 @@ class aeronave_pasajeroFormIn(ModelForm):
     def save(self):
         user = super(aeronave_pasajeroFormIn, self).save(commit=False)
         user.ingresa_aeronave = True
+        user.aeronave.lista_pasajeros.add(user.pasajero)
         user.save()
 
 
 
+
 class aeronave_pasajeroFormOut(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(aeronave_pasajeroFormOut, self).__init__(*args, **kwargs)
+        self.fields['aeronave'].queryset = Nave.objects.all()
+        self.fields['aeronave'].label_from_instance = lambda obj: "%s" % (obj.name)
+        self.fields['pasajero'].queryset = Nave.objects.all()
+        self.fields['pasajero'].label_from_instance = lambda obj: "%s" % (obj.name)
         class Meta:
             model = Aeronave_Pasajero
             fields = [
@@ -187,6 +205,10 @@ def list_revision(request):
     return render(request, template_name='revision/list_revision.html', context= {'revision':revision})
 
 class revisionForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(revisionForm, self).__init__(*args, **kwargs)
+        self.fields['aeronave'].queryset = Nave.objects.all()
+        self.fields['aeronave'].label_from_instance = lambda obj: "%s" % (obj.name)
     class Meta:
         model = Revision
         fields = [

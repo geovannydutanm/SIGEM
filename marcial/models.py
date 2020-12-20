@@ -22,7 +22,7 @@ class Aeronave(models.Model):
     nave_origen = models.ForeignKey(Nave, related_name = 'naves_origen', on_delete=models.CASCADE, null=True, default=None)
     nave_destino = models.ForeignKey(Nave, related_name='naves_destino',  on_delete=models.CASCADE, null=True, default=None)
     lista_pasajeros = models.ManyToManyField(Pasajero, related_name='listado_pasajeros')
-
+    list_pj = ()
 
 #MODELO AERONAVE PASAJERO
 class Aeronave_Pasajero(models.Model):
